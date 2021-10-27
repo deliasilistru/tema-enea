@@ -1,6 +1,7 @@
 import threading
 import pyaudio
 import wave
+import audioop
 
 class AudioRecorder():
     def __init__(self):

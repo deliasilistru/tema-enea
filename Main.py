@@ -4,6 +4,20 @@ import os
 from AudioRecording import AudioRecorder
 from VideoRecording import VideoRecorder
 from YoutubeNavigation import YoutubeNav
+import scipy.io
+from scipy.io import wavfile
+import audioop
+import math
+
+
+def analyze_db(wav):
+    samplerate, data = wavfile.read(wav)
+    rms = audioop.rms(data, 2)
+    lvl_db = 20 * math.log10(rms)
+    f = open("level_db.txt", "a")
+    f.write("The level of decibels in the audio file is: " + str(lvl_db) + '\n')
+    f.close()
+
 
 def start_YTVRecording(filename):
     global video_thread
@@ -54,5 +68,7 @@ if __name__ == "__main__":
     time.sleep(120)
 
     stop_YTRecording(filename)
+
+    analyze_db("temp_audio.wav")
 
     print("Done")

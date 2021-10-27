@@ -10,7 +10,7 @@ class VideoRecorder():
         self.fps = 100
         self.screen_size = (1920,1080)
         self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
-        self.out = cv2.VideoWriter("temp_video.avi", self.fourcc, 16.5, (self.screen_size))
+        self.out = cv2.VideoWriter("temp_video.avi", self.fourcc, 16.0, (self.screen_size))
         self.start_time = time.time()
         self.seconds = 120
 
