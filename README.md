@@ -27,5 +27,6 @@
 ```pip install pyautogui```
 
 ### PyAudio
-```pip install pipwin
+```
+pip install pipwin
 pipwin install pyaudio```
