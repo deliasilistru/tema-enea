@@ -8,6 +8,11 @@ import scipy.io
 from scipy.io import wavfile
 import audioop
 import math
+import logging
+
+
+logging.basicConfig(filename="log_file.log", level = logging.INFO, format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
 def analyze_db(wav):
@@ -36,7 +41,7 @@ def start_YTVRecording(filename):
 
 
 def stop_YTRecording(filename):
-    video_thread.stop()
+
     audio_thread.stop()
     yt_thread.stop()
 
@@ -62,13 +67,11 @@ def file_manager(filename):
 if __name__ == "__main__":
     filename = "Default_user"
     file_manager(filename)
-
     start_YTVRecording(filename)
 
     time.sleep(120)
 
     stop_YTRecording(filename)
-
     analyze_db("temp_audio.wav")
 
     print("Done")
